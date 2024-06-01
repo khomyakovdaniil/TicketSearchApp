@@ -9,46 +9,59 @@ import SwiftUI
 
 struct HomeView: View {
     
-    @EnvironmentObject var coordinator: Coordinator
+    // MARK: - ViewModel
     @StateObject var model: HomeViewModel
     
+    // MARK: - Private constants
+    private let titleFontSize = 22.0
+    private let titleViewWidth = 172.0
+    private let titleViewHeight = 52.0
+    private let subtitleFontSize = 26.0
+    private let searchViewHeight = 160.0
+    private let cellImageHeight = 132.0
+    private let cellImageWidth = 132.0
+    private let scrollViewHeight = 214.0
+    private let cellImagePrompt = "HomeViewImage"
+    
+    
+    // MARK: - View
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
                 Spacer()
-                Text(model.title)
-                    .font(.custom("SFPRODISPLAYBOLD", size: 22))
+                Text(model.strings.title)
+                    .font(.custom(model.fontName, size: titleFontSize))
                     .multilineTextAlignment(.center)
-                    .frame(width: 172, height: 52)
+                    .frame(width: titleViewWidth, height: titleViewHeight)
                     .padding()
                 Spacer()
             }
             List {
                 TextField("",
                           text: $model.departureCity,
-                          prompt: Text("Откуда - Москва")
+                          prompt: Text(model.strings.departureCityPrompt)
                     .foregroundColor(.gray)
                 )
                 TextField("",
                           text: $model.arrivalCity,
-                          prompt: Text("Куда - Турция")
+                          prompt: Text(model.strings.departureCityPrompt)
                     .foregroundColor(.gray)
                 )
                 .onTapGesture {
-                    coordinator.showSearchSheet()
+                    model.userInititatedArrivalCityTextEdit()
                 }
             }
-            .frame(height: 160) // TODO: handle size
-            Text(model.subTitle)
-                .font(.custom("SFPRODISPLAYBOLD", size: 26))
+            .frame(height: searchViewHeight) // TODO: handle size
+            Text(model.strings.subTitle)
+                .font(.custom(model.fontName, size: subtitleFontSize))
                 .padding(.vertical)
             ScrollView(.horizontal) {
                 LazyHStack {
                     ForEach(model.offers ?? [], id: \.self.id) { offer in
                         VStack(alignment: .leading) {
-                            Image("HomeViewImage\(offer.id)")
+                            Image(cellImagePrompt+"\(offer.id)")
                                 .resizable()
-                                .frame(width: 132, height: 132)
+                                .frame(width: cellImageWidth, height: cellImageHeight)
                             Text(offer.title)
                             Text(offer.town)
                             Text("\(offer.price.value)")
@@ -57,18 +70,8 @@ struct HomeView: View {
                      .listStyle(.plain)
                 }
             }
-            .frame(height: 214)
+            .frame(height: scrollViewHeight)
             Spacer()
-//            Button {
-//                coordinator.showSearchView()
-//            } label: {
-//                Text("show Search view")
-//            }
-//            Button {
-//                coordinator.showSearchSheet()
-//            } label: {
-//                Text("show Search sheet")
-//            }
         }
         .padding()
         .onAppear() {
@@ -77,6 +80,7 @@ struct HomeView: View {
     }
 }
 
+// MARK: - Preview
 #Preview {
     HomeView(model: HomeViewModel())
         .environmentObject(Coordinator())

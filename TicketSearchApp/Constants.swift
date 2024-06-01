@@ -8,6 +8,15 @@
 import Foundation
 
 struct Constants {
-    static let homeViewTitle = "Поиск дешевых авиабилетов"
-    static let homeViewSubTitle = "Музыкально отлететь"
+    
+    static let fontName = "SFPRODISPLAYBOLD"
+    
+    struct HomeView {
+            let title = "Поиск дешевых авиабилетов"
+            let subTitle = "Музыкально отлететь"
+            let departureCityPrompt = "Откуда - Москва"
+            let arrivalCityPrompt = "Куда - Турция"
+        }
+    
+    
 }

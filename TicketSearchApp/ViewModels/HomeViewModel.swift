@@ -10,12 +10,14 @@ import SwiftUI
 
 final class HomeViewModel: ObservableObject {
     
-    @Published var data: HomeViewData?
+    @EnvironmentObject var coordinator: Coordinator
     
+    @Published var data: HomeViewData?
     @Published var offers: [HomeViewData.Offer]?
     
-    let title = Constants.homeViewTitle
-    let subTitle = Constants.homeViewSubTitle
+    let strings = Constants.HomeView()
+    let fontName = Constants.fontName
+    
     @State var departureCity: String = "Минск"
     @State var arrivalCity: String = ""
     
@@ -32,5 +34,9 @@ final class HomeViewModel: ObservableObject {
             .optionalize()
             .replaceError(with: nil)
             .assign(to: &$data)
+    }
+    
+    func userInititatedArrivalCityTextEdit() {
+        coordinator.showSearchSheet()
     }
 }

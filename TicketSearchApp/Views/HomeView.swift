@@ -8,13 +8,16 @@
 import SwiftUI
 
 struct HomeView: View {
+    
     @EnvironmentObject var coordinator: Coordinator
+    @StateObject var model: HomeViewModel
+    
     var body: some View {
         VStack {
             Image(systemName: "globe")
                 .imageScale(.large)
                 .foregroundStyle(.tint)
-            Text("Hello, world!")
+            Text(model.offers?.first?.title ?? "no data")
             Button {
                 coordinator.showSearchView()
             } label: {
@@ -27,10 +30,13 @@ struct HomeView: View {
             }
         }
         .padding()
+        .onAppear() {
+            model.getData()
+        }
     }
 }
 
 #Preview {
-    HomeView()
+    HomeView(model: HomeViewModel())
         .environmentObject(Coordinator())
 }

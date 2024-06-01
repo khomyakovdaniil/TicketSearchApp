@@ -34,7 +34,8 @@ final class Coordinator: ObservableObject {
     func getView(_ view: AppViews) -> some View {
         switch view {
         case .home:
-            HomeView()
+            let vm = HomeViewModel()
+            HomeView(model: vm)
         case .search:
             SearchView()
         case .ticketList:

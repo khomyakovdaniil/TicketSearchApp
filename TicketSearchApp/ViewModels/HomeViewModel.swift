@@ -6,12 +6,18 @@
 //
 
 import Foundation
+import SwiftUI
 
 final class HomeViewModel: ObservableObject {
     
     @Published var data: HomeViewData?
     
     @Published var offers: [HomeViewData.Offer]?
+    
+    let title = Constants.homeViewTitle
+    let subTitle = Constants.homeViewSubTitle
+    @State var departureCity: String = "Минск"
+    @State var arrivalCity: String = ""
     
     init() {
         bind()

@@ -13,21 +13,62 @@ struct HomeView: View {
     @StateObject var model: HomeViewModel
     
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text(model.offers?.first?.title ?? "no data")
-            Button {
-                coordinator.showSearchView()
-            } label: {
-                Text("show Search view")
+        VStack(alignment: .leading) {
+            HStack {
+                Spacer()
+                Text(model.title)
+                    .font(.custom("SFPRODISPLAYBOLD", size: 22))
+                    .multilineTextAlignment(.center)
+                    .frame(width: 172, height: 52)
+                    .padding()
+                Spacer()
             }
-            Button {
-                coordinator.showSearchSheet()
-            } label: {
-                Text("show Search sheet")
+            List {
+                TextField("",
+                          text: $model.departureCity,
+                          prompt: Text("Откуда - Москва")
+                    .foregroundColor(.gray)
+                )
+                TextField("",
+                          text: $model.arrivalCity,
+                          prompt: Text("Куда - Турция")
+                    .foregroundColor(.gray)
+                )
+                .onTapGesture {
+                    coordinator.showSearchSheet()
+                }
             }
+            .frame(height: 160) // TODO: handle size
+            Text(model.subTitle)
+                .font(.custom("SFPRODISPLAYBOLD", size: 26))
+                .padding(.vertical)
+            ScrollView(.horizontal) {
+                LazyHStack {
+                    ForEach(model.offers ?? [], id: \.self.id) { offer in
+                        VStack(alignment: .leading) {
+                            Image("HomeViewImage\(offer.id)")
+                                .resizable()
+                                .frame(width: 132, height: 132)
+                            Text(offer.title)
+                            Text(offer.town)
+                            Text("\(offer.price.value)")
+                        }
+                     }
+                     .listStyle(.plain)
+                }
+            }
+            .frame(height: 214)
+            Spacer()
+//            Button {
+//                coordinator.showSearchView()
+//            } label: {
+//                Text("show Search view")
+//            }
+//            Button {
+//                coordinator.showSearchSheet()
+//            } label: {
+//                Text("show Search sheet")
+//            }
         }
         .padding()
         .onAppear() {

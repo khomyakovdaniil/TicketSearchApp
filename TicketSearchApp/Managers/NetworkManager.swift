@@ -62,7 +62,7 @@ final class NetworkManager {
     }
 }
 
-enum Endpoints {
+fileprivate enum Endpoints {
     case homeViewData
     case searchViewData
     case ticketListViewData

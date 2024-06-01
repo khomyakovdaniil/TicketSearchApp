@@ -37,8 +37,10 @@ final class Coordinator: ObservableObject {
             let vm = HomeViewModel()
             HomeView(model: vm)
         case .search:
+            let vm = SearchViewModel()
             SearchView()
         case .ticketList:
+            let vm = TicketListViewModel()
             TicketListView()
         }
     }

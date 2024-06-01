@@ -8,17 +8,22 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var coordinator: Coordinator
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationStack(path: $coordinator.path) {
+            coordinator.getView(AppViews.home)
+                .sheet(item: $coordinator.sheet) { sheet in
+                    coordinator.getSheet(sheet)
+                }
+                .navigationDestination(for: AppViews.self) { view in
+                    coordinator.getView(view)
+                }
         }
-        .padding()
     }
 }
 
 #Preview {
     ContentView()
+        .environmentObject(Coordinator())
 }

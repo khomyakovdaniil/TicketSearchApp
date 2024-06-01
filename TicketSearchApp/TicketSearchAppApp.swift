@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct TicketSearchAppApp: App {
+    @StateObject private var coordinator = Coordinator()
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(coordinator)
         }
     }
 }

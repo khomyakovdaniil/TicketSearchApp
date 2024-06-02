@@ -11,6 +11,7 @@
 		5F2CC4E52C0B912D00E86583 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2CC4E42C0B912D00E86583 /* Constants.swift */; };
 		5F2CC5042C0C8BA600E86583 /* Color+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2CC5032C0C8BA600E86583 /* Color+Hex.swift */; };
 		5F2CC5082C0CC15D00E86583 /* Date+Formatted.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2CC5072C0CC15D00E86583 /* Date+Formatted.swift */; };
+		5F2CC50A2C0CEF8E00E86583 /* String+ToDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2CC5092C0CEF8E00E86583 /* String+ToDate.swift */; };
 		5F7912362C0B4E2000CA4060 /* TicketSearchAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7912352C0B4E2000CA4060 /* TicketSearchAppApp.swift */; };
 		5F7912382C0B4E2000CA4060 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7912372C0B4E2000CA4060 /* HomeView.swift */; };
 		5F79123A2C0B4E2200CA4060 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F7912392C0B4E2200CA4060 /* Assets.xcassets */; };
@@ -28,6 +29,8 @@
 		5F79125D2C0B74A400CA4060 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F79125C2C0B74A400CA4060 /* SearchViewModel.swift */; };
 		5F79125F2C0B74BB00CA4060 /* TicketListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F79125E2C0B74BB00CA4060 /* TicketListViewModel.swift */; };
 		5F7912612C0B74CB00CA4060 /* SearchSheetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7912602C0B74CB00CA4060 /* SearchSheetViewModel.swift */; };
+		5FEBD7CF2C0CF92C0085DDF9 /* TimeInterval+ToHours.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEBD7CE2C0CF92C0085DDF9 /* TimeInterval+ToHours.swift */; };
+		5FEBD7D12C0CFC180085DDF9 /* Double+Rounded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEBD7D02C0CFC180085DDF9 /* Double+Rounded.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +47,7 @@
 		5F2CC5022C0B9C4B00E86583 /* SFPRODISPLAYSEMIBOLDITALIC.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = SFPRODISPLAYSEMIBOLDITALIC.OTF; sourceTree = "<group>"; };
 		5F2CC5032C0C8BA600E86583 /* Color+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Hex.swift"; sourceTree = "<group>"; };
 		5F2CC5072C0CC15D00E86583 /* Date+Formatted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Formatted.swift"; sourceTree = "<group>"; };
+		5F2CC5092C0CEF8E00E86583 /* String+ToDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+ToDate.swift"; sourceTree = "<group>"; };
 		5F7912322C0B4E2000CA4060 /* TicketSearchApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TicketSearchApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F7912352C0B4E2000CA4060 /* TicketSearchAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketSearchAppApp.swift; sourceTree = "<group>"; };
 		5F7912372C0B4E2000CA4060 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -62,6 +66,8 @@
 		5F79125C2C0B74A400CA4060 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		5F79125E2C0B74BB00CA4060 /* TicketListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketListViewModel.swift; sourceTree = "<group>"; };
 		5F7912602C0B74CB00CA4060 /* SearchSheetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSheetViewModel.swift; sourceTree = "<group>"; };
+		5FEBD7CE2C0CF92C0085DDF9 /* TimeInterval+ToHours.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+ToHours.swift"; sourceTree = "<group>"; };
+		5FEBD7D02C0CFC180085DDF9 /* Double+Rounded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Rounded.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +87,9 @@
 				5F2CC4E22C0B7BF900E86583 /* Publisher+Optionalize.swift */,
 				5F2CC5032C0C8BA600E86583 /* Color+Hex.swift */,
 				5F2CC5072C0CC15D00E86583 /* Date+Formatted.swift */,
+				5F2CC5092C0CEF8E00E86583 /* String+ToDate.swift */,
+				5FEBD7CE2C0CF92C0085DDF9 /* TimeInterval+ToHours.swift */,
+				5FEBD7D02C0CFC180085DDF9 /* Double+Rounded.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -89,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				5F2CC4E72C0B93A400E86583 /* Font */,
+				5F2CC4E42C0B912D00E86583 /* Constants.swift */,
 				5F7912392C0B4E2200CA4060 /* Assets.xcassets */,
 			);
 			path = "Support files";
@@ -129,15 +139,14 @@
 		5F7912342C0B4E2000CA4060 /* TicketSearchApp */ = {
 			isa = PBXGroup;
 			children = (
-				5F2CC4E12C0B7BE000E86583 /* Extensions */,
 				5F79124E2C0B656100CA4060 /* Managers */,
 				5F7912522C0B6D1A00CA4060 /* Models */,
 				5F79124D2C0B654C00CA4060 /* Views */,
 				5F7912512C0B6D0100CA4060 /* ViewModels */,
 				5F7912352C0B4E2000CA4060 /* TicketSearchAppApp.swift */,
 				5F7912432C0B4E4100CA4060 /* Coordinator.swift */,
-				5F2CC4E42C0B912D00E86583 /* Constants.swift */,
 				5F2CC4E62C0B937000E86583 /* Support files */,
+				5F2CC4E12C0B7BE000E86583 /* Extensions */,
 				5F79123B2C0B4E2200CA4060 /* Preview Content */,
 			);
 			path = TicketSearchApp;
@@ -154,10 +163,10 @@
 		5F79124D2C0B654C00CA4060 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				5F7912372C0B4E2000CA4060 /* HomeView.swift */,
 				5F79124B2C0B548D00CA4060 /* ContentView.swift */,
-				5F7912452C0B51F800CA4060 /* SearchView.swift */,
+				5F7912372C0B4E2000CA4060 /* HomeView.swift */,
 				5F7912492C0B542900CA4060 /* SearchSheet.swift */,
+				5F7912452C0B51F800CA4060 /* SearchView.swift */,
 				5F7912472C0B53DD00CA4060 /* TicketListView.swift */,
 			);
 			path = Views;
@@ -175,9 +184,9 @@
 			isa = PBXGroup;
 			children = (
 				5F79125A2C0B748D00CA4060 /* HomeViewModel.swift */,
+				5F7912602C0B74CB00CA4060 /* SearchSheetViewModel.swift */,
 				5F79125C2C0B74A400CA4060 /* SearchViewModel.swift */,
 				5F79125E2C0B74BB00CA4060 /* TicketListViewModel.swift */,
-				5F7912602C0B74CB00CA4060 /* SearchSheetViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -271,6 +280,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5F7912592C0B6FDC00CA4060 /* TicketListViewData.swift in Sources */,
+				5F2CC50A2C0CEF8E00E86583 /* String+ToDate.swift in Sources */,
 				5F2CC4E52C0B912D00E86583 /* Constants.swift in Sources */,
 				5F7912462C0B51F800CA4060 /* SearchView.swift in Sources */,
 				5F7912382C0B4E2000CA4060 /* HomeView.swift in Sources */,
@@ -283,8 +293,10 @@
 				5F7912482C0B53DD00CA4060 /* TicketListView.swift in Sources */,
 				5F79125B2C0B748D00CA4060 /* HomeViewModel.swift in Sources */,
 				5F7912502C0B657200CA4060 /* NetworkManager.swift in Sources */,
+				5FEBD7D12C0CFC180085DDF9 /* Double+Rounded.swift in Sources */,
 				5F7912362C0B4E2000CA4060 /* TicketSearchAppApp.swift in Sources */,
 				5F7912442C0B4E4100CA4060 /* Coordinator.swift in Sources */,
+				5FEBD7CF2C0CF92C0085DDF9 /* TimeInterval+ToHours.swift in Sources */,
 				5F2CC4E32C0B7BF900E86583 /* Publisher+Optionalize.swift in Sources */,
 				5F79124A2C0B542900CA4060 /* SearchSheet.swift in Sources */,
 				5F7912612C0B74CB00CA4060 /* SearchSheetViewModel.swift in Sources */,

@@ -17,8 +17,8 @@ struct TicketListViewData: Codable {
         let price: Price
         let providerName: String
         let company: String
-        let departure: Departure
-        let arrival: Arrival
+        let departure: FlightData
+        let arrival: FlightData
         let hasTransfer: Bool
         let hasVisaTransfer: Bool
         let luggage: Luggage?
@@ -46,6 +46,11 @@ struct TicketListViewData: Codable {
             let hasLuggage: Bool
             let price: Price?
             
+            enum CodingKeys: String, CodingKey {
+                case hasLuggage = "has_luggage"
+                case price
+            }
+            
             struct Price: Codable {
                 let value: Int
             }
@@ -54,22 +59,21 @@ struct TicketListViewData: Codable {
         struct HandLuggage: Codable {
             let hasHandLuggage: Bool
             let size: String?
-        }
-
-        struct Departure: Codable {
-            let town: String
-            let date: String
-            let airport: String
-        }
-        
-        struct Arrival: Codable {
-            let town: String
-            let date: String
-            let airport: String
+            
+            enum CodingKeys: String, CodingKey {
+                case hasHandLuggage = "has_hand_luggage"
+                case size
+            }
         }
         
         struct Price: Codable {
             let value: Int
+        }
+        
+        struct FlightData: Codable {
+            let town: String
+            let date: String
+            let airport: String
         }
     }
 }

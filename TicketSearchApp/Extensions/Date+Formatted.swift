@@ -29,4 +29,10 @@ extension Date {
         formatter.setLocalizedDateFormatFromTemplate("EEE")
         return formatter.string(from: self).lowercased()
     }
+    
+    func formattedTime() -> String {
+        let formatter = DateFormatter()
+        formatter.setLocalizedDateFormatFromTemplate("HH:mm")
+        return formatter.string(from: self)
+    }
 }

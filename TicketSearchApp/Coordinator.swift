@@ -40,8 +40,8 @@ final class Coordinator: ObservableObject {
             let vm = SearchViewModel(coordinator: self)
             SearchView(model: vm)
         case .ticketList:
-            let vm = TicketListViewModel()
-            TicketListView()
+            let vm = TicketListViewModel(coordinator: self)
+            TicketListView(model: vm)
         }
     }
     

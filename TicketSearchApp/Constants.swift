@@ -41,4 +41,8 @@ struct Constants {
     
     }
     
+    struct SearchView {
+        
+    }
+    
 }

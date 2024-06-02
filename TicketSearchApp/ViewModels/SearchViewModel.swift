@@ -8,5 +8,36 @@
 import Foundation
 
 final class SearchViewModel: ObservableObject {
+
+    init(coordinator: Coordinator) {
+        self.coordinator = coordinator
+        bind()
+    }
+    
+    var coordinator: Coordinator
+    
     @Published var data: SearchViewData?
+    @Published var offers: [SearchViewData.TicketOffer]?
+    
+    let strings = Constants.SearchView()
+    let fontName = Constants.fontName
+    
+    @Published var departureCity: String = "Минск"
+    @Published var arrivalCity: String = ""
+    
+    private func bind() {
+        $data.map({ $0?.ticketsOffers }).assign(to: &$offers)
+    }
+    
+    func getData() {
+        NetworkManager.fetchSearchViewData()
+            .optionalize()
+            .replaceError(with: nil)
+            .assign(to: &$data)
+    }
+    
+    @MainActor
+    func userTappedShowAllTickets() {
+        coordinator.showTicketListView()
+    }
 }

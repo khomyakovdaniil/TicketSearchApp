@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
+    
     @EnvironmentObject var coordinator: Coordinator
     
     var body: some View {
@@ -20,6 +21,7 @@ struct ContentView: View {
                     coordinator.getView(view)
                 }
         }
+        .preferredColorScheme(.dark)
     }
 }
 

@@ -101,5 +101,5 @@ struct HomeView: View {
 // MARK: - Preview
 #Preview {
     HomeView(model: HomeViewModel(coordinator: Coordinator()))
-        .environmentObject(Coordinator())
+        .preferredColorScheme(.dark)
 }

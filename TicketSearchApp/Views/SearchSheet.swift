@@ -133,4 +133,5 @@ struct SearchSheet: View {
 
 #Preview {
     SearchSheet(model: SearchSheetViewModel(coordinator: Coordinator()))
+        .preferredColorScheme(.dark)
 }

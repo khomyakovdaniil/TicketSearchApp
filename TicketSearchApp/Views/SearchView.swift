@@ -156,5 +156,5 @@ struct SearchView: View {
 
 #Preview {
     SearchView(model: SearchViewModel(coordinator: Coordinator()))
-        .environmentObject(Coordinator())
+        .preferredColorScheme(.dark)
 }

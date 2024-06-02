@@ -23,9 +23,6 @@ struct HomeView: View {
     private let scrollViewHeight = 214.0
     private let cellImagePrompt = "HomeViewImage"
     
-    // MARK: - State variables
-    @FocusState private var isTextFieldFocused: Bool
-    
     
     // MARK: - View
     var body: some View {
@@ -44,7 +41,7 @@ struct HomeView: View {
                     .resizable()
                     .frame(width: 24, height: 24)
                     .padding(.leading, 8)
-                VStack {
+                VStack(alignment: .leading) {
                     TextField("",
                               text: $model.departureCity,
                               prompt: Text(model.strings.departureCityPrompt)
@@ -52,17 +49,11 @@ struct HomeView: View {
                     )
                     Divider()
                         .background(Color(hex: "#9F9F9F"))
-                    TextField("",
-                              text: $model.arrivalCity,
-                              prompt: Text(model.strings.arrivalCityPrompt)
+                    Text(model.strings.arrivalCityPrompt)
                         .foregroundColor(.gray)
-                    )
-                    .focused($isTextFieldFocused)
-                    .onChange(of: isTextFieldFocused) { focused in
-                        if focused {
+                    .onTapGesture() {
                             model.userInititatedArrivalCityTextEdit()
                         }
-                    }
                 }
             }
             .padding(.trailing)

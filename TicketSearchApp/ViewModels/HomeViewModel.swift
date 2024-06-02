@@ -10,7 +10,12 @@ import SwiftUI
 
 final class HomeViewModel: ObservableObject {
     
-    @EnvironmentObject var coordinator: Coordinator
+    init(coordinator: Coordinator) {
+        self.coordinator = coordinator
+        bind()
+    }
+    
+    var coordinator: Coordinator
     
     @Published var data: HomeViewData?
     @Published var offers: [HomeViewData.Offer]?
@@ -18,12 +23,8 @@ final class HomeViewModel: ObservableObject {
     let strings = Constants.HomeView()
     let fontName = Constants.fontName
     
-    @State var departureCity: String = "Минск"
-    @State var arrivalCity: String = ""
-    
-    init() {
-        bind()
-    }
+    @Published var departureCity: String = "Минск"
+    @Published var arrivalCity: String = ""
     
     private func bind() {
         $data.map({ $0?.offers }).assign(to: &$offers)
@@ -36,6 +37,7 @@ final class HomeViewModel: ObservableObject {
             .assign(to: &$data)
     }
     
+    @MainActor 
     func userInititatedArrivalCityTextEdit() {
         coordinator.showSearchSheet()
     }

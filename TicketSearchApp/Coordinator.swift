@@ -49,7 +49,8 @@ final class Coordinator: ObservableObject {
     func getSheet(_ sheet: AppSheets) -> some View {
         switch sheet {
         case .search:
-            SearchSheet()
+            let vm = SearchSheetViewModel(coordinator: self)
+            SearchSheet(model: vm)
         }
     }
 }

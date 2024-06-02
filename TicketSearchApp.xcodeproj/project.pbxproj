@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5F2CC4E32C0B7BF900E86583 /* Publisher+Optionalize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2CC4E22C0B7BF900E86583 /* Publisher+Optionalize.swift */; };
 		5F2CC4E52C0B912D00E86583 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2CC4E42C0B912D00E86583 /* Constants.swift */; };
+		5F2CC5042C0C8BA600E86583 /* Color+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2CC5032C0C8BA600E86583 /* Color+Hex.swift */; };
 		5F7912362C0B4E2000CA4060 /* TicketSearchAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7912352C0B4E2000CA4060 /* TicketSearchAppApp.swift */; };
 		5F7912382C0B4E2000CA4060 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7912372C0B4E2000CA4060 /* HomeView.swift */; };
 		5F79123A2C0B4E2200CA4060 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F7912392C0B4E2200CA4060 /* Assets.xcassets */; };
@@ -40,6 +41,7 @@
 		5F2CC5002C0B9C4B00E86583 /* SFPRODISPLAYLIGHTITALIC.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = SFPRODISPLAYLIGHTITALIC.OTF; sourceTree = "<group>"; };
 		5F2CC5012C0B9C4B00E86583 /* SFPRODISPLAYHEAVYITALIC.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = SFPRODISPLAYHEAVYITALIC.OTF; sourceTree = "<group>"; };
 		5F2CC5022C0B9C4B00E86583 /* SFPRODISPLAYSEMIBOLDITALIC.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = SFPRODISPLAYSEMIBOLDITALIC.OTF; sourceTree = "<group>"; };
+		5F2CC5032C0C8BA600E86583 /* Color+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Hex.swift"; sourceTree = "<group>"; };
 		5F7912322C0B4E2000CA4060 /* TicketSearchApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TicketSearchApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F7912352C0B4E2000CA4060 /* TicketSearchAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketSearchAppApp.swift; sourceTree = "<group>"; };
 		5F7912372C0B4E2000CA4060 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -75,6 +77,7 @@
 			isa = PBXGroup;
 			children = (
 				5F2CC4E22C0B7BF900E86583 /* Publisher+Optionalize.swift */,
+				5F2CC5032C0C8BA600E86583 /* Color+Hex.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -281,6 +284,7 @@
 				5F2CC4E32C0B7BF900E86583 /* Publisher+Optionalize.swift in Sources */,
 				5F79124A2C0B542900CA4060 /* SearchSheet.swift in Sources */,
 				5F7912612C0B74CB00CA4060 /* SearchSheetViewModel.swift in Sources */,
+				5F2CC5042C0C8BA600E86583 /* Color+Hex.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

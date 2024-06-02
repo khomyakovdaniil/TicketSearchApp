@@ -16,14 +16,24 @@ final class SearchViewModel: ObservableObject {
     
     var coordinator: Coordinator
     
-    @Published var data: SearchViewData?
-    @Published var offers: [SearchViewData.TicketOffer]?
+    @Published var data: SearchViewData? {
+        didSet {
+            print("gotcha")
+        }
+    }
+    @Published var offers: [SearchViewData.TicketOffer]? {
+        didSet {
+            print("gotcha")
+        }
+    }
     
     let strings = Constants.SearchView()
     let fontName = Constants.fontName
     
     @Published var departureCity: String = "Минск"
     @Published var arrivalCity: String = ""
+    @Published var flightDate: Date = Date()
+    @Published var returnDate: Date?
     
     private func bind() {
         $data.map({ $0?.ticketsOffers }).assign(to: &$offers)

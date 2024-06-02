@@ -18,7 +18,7 @@ struct SearchViewData: Codable {
     struct TicketOffer: Codable {
         let id: Int
         let title: String
-        let timeRange: TimeRange
+        let timeRange: [String]
         let price: Price
 
         enum CodingKeys: String, CodingKey {
@@ -26,10 +26,6 @@ struct SearchViewData: Codable {
             case title
             case timeRange = "time_range"
             case price
-        }
-        
-        struct TimeRange: Codable {
-            let times: [String]
         }
 
         struct Price: Codable {

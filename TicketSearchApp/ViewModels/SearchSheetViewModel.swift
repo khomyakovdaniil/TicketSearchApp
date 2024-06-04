@@ -58,6 +58,7 @@ final class SearchSheetViewModel: ObservableObject {
     
     @MainActor 
     func userEnteredArrivalCity() {
+        coordinator.arrivalCity = arrivalCity
         coordinator.showSearchView()
     }
     

@@ -309,6 +309,6 @@ fileprivate struct TicketOfferView: View {
 }
 
 #Preview {
-    SearchView(model: SearchViewModel(coordinator: Coordinator()))
+    SearchView(model: SearchViewModel(coordinator: Coordinator(), arrivalCity: "test"))
         .preferredColorScheme(.dark)
 }

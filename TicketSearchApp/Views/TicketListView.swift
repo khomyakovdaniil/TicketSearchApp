@@ -163,6 +163,6 @@ fileprivate struct TicketFullInfoView: View {
 }
 
 #Preview {
-    TicketListView(model: TicketListViewModel(coordinator: Coordinator()))
+    TicketListView(model: TicketListViewModel(coordinator: Coordinator(), arrivalCity: "test", flightDate: Date()))
         .preferredColorScheme(.dark)
 }

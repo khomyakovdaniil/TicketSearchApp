@@ -14,6 +14,9 @@ final class Coordinator: ObservableObject {
     @Published var view: AppViews = .home
     @Published var sheet: AppSheets?
     
+    var arrivalCity: String? // TODO: should have used repository for that
+    var flightDate: Date? // TODO: should have used repository for that
+    
     func showHomeView() {
         path.removeLast(path.count)
     }
@@ -37,10 +40,10 @@ final class Coordinator: ObservableObject {
             let vm = HomeViewModel(coordinator: self)
             HomeView(model: vm)
         case .search:
-            let vm = SearchViewModel(coordinator: self)
+            let vm = SearchViewModel(coordinator: self, arrivalCity: arrivalCity ?? "")
             SearchView(model: vm)
         case .ticketList:
-            let vm = TicketListViewModel(coordinator: self)
+            let vm = TicketListViewModel(coordinator: self, arrivalCity: arrivalCity ?? "", flightDate: flightDate ?? Date())
             TicketListView(model: vm)
         }
     }

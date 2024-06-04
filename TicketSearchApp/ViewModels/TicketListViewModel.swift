@@ -9,8 +9,10 @@ import Foundation
 
 final class TicketListViewModel: ObservableObject {
    
-    init(coordinator: Coordinator) {
+    init(coordinator: Coordinator, arrivalCity: String, flightDate: Date) {
         self.coordinator = coordinator
+        self.arrivalCity = arrivalCity
+        self.flightDate = flightDate
         bind()
     }
     
@@ -31,8 +33,8 @@ final class TicketListViewModel: ObservableObject {
     let fontName = Constants.fontName
     
     @Published var departureCity: String = "Минск"
-    @Published var arrivalCity: String = ""
-    @Published var flightDate: Date = Date()
+    @Published var arrivalCity: String
+    @Published var flightDate: Date
     @Published var returnDate: Date?
     
     private func bind() {

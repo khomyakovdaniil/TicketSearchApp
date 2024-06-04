@@ -10,8 +10,9 @@ import SwiftUI
 
 final class SearchViewModel: ObservableObject {
 
-    init(coordinator: Coordinator) {
+    init(coordinator: Coordinator, arrivalCity: String) {
         self.coordinator = coordinator
+        self.arrivalCity = arrivalCity
         bind()
     }
     
@@ -39,7 +40,7 @@ final class SearchViewModel: ObservableObject {
            }
         }
     }
-    @Published var arrivalCity: String = "Москва"
+    @Published var arrivalCity: String
     @Published var flightDate: Date = Date()
     @Published var returnDate: Date?
     
@@ -56,6 +57,7 @@ final class SearchViewModel: ObservableObject {
     
     @MainActor
     func userTappedShowAllTickets() {
+        coordinator.flightDate = flightDate
         coordinator.showTicketListView()
     }
 }

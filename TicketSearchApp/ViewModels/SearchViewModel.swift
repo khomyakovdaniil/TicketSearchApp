@@ -31,7 +31,7 @@ final class SearchViewModel: ObservableObject {
     let fontName = Constants.fontName
     
     @Published var departureCity: String = "Минск"
-    @Published var arrivalCity: String = ""
+    @Published var arrivalCity: String = "Москва"
     @Published var flightDate: Date = Date()
     @Published var returnDate: Date?
     

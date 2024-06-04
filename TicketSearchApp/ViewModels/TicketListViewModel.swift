@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 final class TicketListViewModel: ObservableObject {
    
@@ -32,10 +33,10 @@ final class TicketListViewModel: ObservableObject {
     let strings = Constants.SearchView()
     let fontName = Constants.fontName
     
-    @Published var departureCity: String = "Минск"
-    @Published var arrivalCity: String
-    @Published var flightDate: Date
-    @Published var returnDate: Date?
+    @AppStorage("Departure city")
+    var departureCity: String = ""
+    var arrivalCity: String
+    var flightDate: Date
     
     private func bind() {
         $data.map({ $0?.tickets }).assign(to: &$tickets)

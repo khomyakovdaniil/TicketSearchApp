@@ -57,6 +57,7 @@ final class SearchViewModel: ObservableObject {
     
     @MainActor
     func userTappedShowAllTickets() {
+        coordinator.arrivalCity = arrivalCity
         coordinator.flightDate = flightDate
         coordinator.showTicketListView()
     }

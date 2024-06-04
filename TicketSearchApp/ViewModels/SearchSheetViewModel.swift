@@ -45,7 +45,8 @@ final class SearchSheetViewModel: ObservableObject {
     
     lazy var actions: [ActionData] = [
         ActionData(imagename: "routeIcon", text: actionTitles.route, action: { [weak self] in self?.coordinator.showPlugSheet() }),
-        ActionData(imagename: "globeIcon", text: actionTitles.anywhere, action: { [weak self] in self?.arrivalCity = self?.actionTitles.anywhere ?? "" }),
+        ActionData(imagename: "globeIcon", text: actionTitles.anywhere, action: { [weak self] in self?.arrivalCity = self?.actionTitles.anywhere ?? ""
+            self?.userEnteredArrivalCity()}),
         ActionData(imagename: "calendarIcon", text: actionTitles.holiday, action: { [weak self] in self?.coordinator.showPlugSheet() }),
         ActionData(imagename: "fireIcon", text: actionTitles.hot, action: { [weak self] in self?.coordinator.showPlugSheet() })
     ]

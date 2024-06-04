@@ -18,10 +18,7 @@ struct HomeView: View {
     private let titleViewHeight = 52.0
     private let subtitleFontSize = 26.0
     private let searchViewHeight = 90.0
-    private let cellImageHeight = 132.0
-    private let cellImageWidth = 132.0
     private let scrollViewHeight = 214.0
-    private let cellImagePrompt = "HomeViewImage"
     
     
     // MARK: - View
@@ -46,7 +43,7 @@ struct HomeView: View {
             ScrollView(.horizontal) {
                 LazyHStack {
                     ForEach(model.offers ?? [], id: \.self.id) { offer in
-                        ConcertView(cellImagePrompt: cellImagePrompt, cellImageWidth: cellImageWidth, cellImageHeight: cellImageHeight, concert: offer)
+                        ConcertView(concert: offer)
                      }
                      .listStyle(.plain)
                 }
@@ -91,6 +88,7 @@ fileprivate struct LocationsView: View {
                         .foregroundColor(.gray)
                     Spacer()
                 }
+                .contentShape(.rect)
                 .onTapGesture() {
                         action()
                     }
@@ -114,18 +112,15 @@ fileprivate struct LocationsView: View {
 
 fileprivate struct ConcertView: View {
     
-    let cellImagePrompt: String
-    let cellImageWidth: CGFloat
-    let cellImageHeight: CGFloat
+    private let cellImagePrompt = "HomeViewImage"
+    private let cellImageHeight = 132.0
+    private let cellImageWidth = 132.0
     let id: String
     let title: String
     let town: String
     let price: String
     
-    init(cellImagePrompt: String, cellImageWidth: CGFloat, cellImageHeight: CGFloat, concert: HomeViewData.Offer) {
-        self.cellImagePrompt = cellImagePrompt
-        self.cellImageWidth = cellImageWidth
-        self.cellImageHeight = cellImageHeight
+    init(concert: HomeViewData.Offer) {
         self.id = String(concert.id)
         self.title = concert.title
         self.town = concert.town
@@ -133,7 +128,7 @@ fileprivate struct ConcertView: View {
     }
     
     var body: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 4) {
             Image(cellImagePrompt+id)
                 .resizable()
                 .frame(width: cellImageWidth, height: cellImageHeight)

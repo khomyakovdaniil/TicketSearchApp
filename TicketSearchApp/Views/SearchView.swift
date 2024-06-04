@@ -54,35 +54,33 @@ struct SearchView: View {
                 }
             }
             .padding(.leading)
-            LazyVStack {
-                ForEach(model.offers ?? [], id: \.self.id) {
-                    ticketOffer in
-                    //                    List(model.offers ?? [], id: \.self.id) { ticketOffer in
-                    HStack {
-                        Image(systemName: "slider.horizontal.3") // TODO: replace with colored circles
-                        VStack(alignment: .leading) {
-                            HStack {
-                                Text(ticketOffer.title)
-                                Spacer()
-                                Text("\(ticketOffer.price.value)")
-                            }
-                            ScrollView(.horizontal, showsIndicators: false) {
-                                HStack {
-                                    ForEach(ticketOffer.timeRange, id: \.self) { time in
-                                        Text(time)
-                                    }
-                                }
-                            }
-                        }
-                    }
+            LazyVStack(alignment: .leading) {
+                Text("Прямые рельсы") // TODO: just for lulz, it's written like that in Figma
+                    .font(.title) // TODO: set font
+                ForEach(Array(model.offers?.enumerated()  ?? [].enumerated()), id: \.offset) { index, ticketOffer in
+                    TicketOfferView(index, ticketOffer)
                 }
+            }
+            .padding()
+            .background {
+                RoundedRectangle(cornerRadius: 16)
+                    .fill(Color(hex: "#1D1E20"))
             }
             .padding()
             Button() {
                 model.userTappedShowAllTickets()
             } label: {
                 Text("Посмотреть все билеты")
+                    .foregroundColor(.white)
+                    .frame(height: 42)
+                    .frame(maxWidth: .infinity)
+                    .font(.system(size: 16)) // TODO: replace font
+                    .background {
+                        RoundedRectangle(cornerRadius: 8)
+                            .fill(Color(hex: "#2261BC"))
+                    }
             }
+            .padding(16)
             Spacer()
         }
         .toolbar(.hidden, for: .navigationBar)
@@ -250,6 +248,62 @@ fileprivate struct PassengersView: View {
         .background {
             RoundedRectangle(cornerRadius: 50)
                 .fill(Color(hex: "#2F3035"))
+        }
+    }
+}
+
+fileprivate struct TicketOfferView: View {
+    
+    private let price: String
+    private let title: String
+    private let timeRange: [String]
+    private let color: Color
+    
+    init(_ index: Int,_ offer: SearchViewData.TicketOffer) {
+        price = offer.price.value.formatted()
+        title = offer.title
+        timeRange = offer.timeRange
+        color = {
+            switch index {
+            case 0:
+                return Color(.red)
+            case 1:
+                return Color(.blue)
+            case 2:
+                return Color(.white)
+            default:
+                return Color(.white)
+            }
+        }()
+    }
+    
+    var body: some View {
+        VStack {
+            HStack {
+                Circle()
+                    .fill(color)
+                    .frame(width: 24, height: 24)
+                    .padding(.bottom)
+                VStack(alignment: .leading, spacing: 4) {
+                    HStack(spacing: 2) {
+                        Text(title)
+                        Spacer()
+                        Text(price + " ₽")
+                            .foregroundColor(.blue)
+                        Image(systemName: "chevron.right")
+                            .foregroundColor(.blue)
+                    }
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack {
+                            ForEach(timeRange, id: \.self) { time in
+                                Text(time)
+                            }
+                        }
+                    }
+                }
+            }
+            Divider()
+                .background(Color(hex: "#9F9F9F"))
         }
     }
 }

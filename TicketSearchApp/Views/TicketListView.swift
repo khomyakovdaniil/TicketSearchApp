@@ -16,20 +16,41 @@ struct TicketListView: View {
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
-        VStack {
-            LocationsView(departureCity: model.departureCity, arrivalCity: model.arrivalCity, flightDate: model.flightDate) {
-                dismiss()
-            }
-            .padding(.horizontal)
-            ScrollView {
-                LazyVStack(spacing: 0) {
-                    ForEach(model.tickets ?? [], id: \.self.id) { ticket in
-                        TicketFullInfoView(data: ticket)
+        ZStack {
+            VStack {
+                LocationsView(departureCity: model.departureCity, arrivalCity: model.arrivalCity, flightDate: model.flightDate) {
+                    dismiss()
+                }
+                .padding(.horizontal)
+                ScrollView {
+                    LazyVStack(spacing: 0) {
+                        ForEach(model.tickets ?? [], id: \.self.id) { ticket in
+                            TicketFullInfoView(data: ticket)
+                        }
                     }
                 }
+                .padding()
+                Spacer()
             }
-            .padding()
-            Spacer()
+            VStack {
+                Spacer()
+                HStack {
+                    Image(systemName: "slider.horizontal.3")
+                        .frame(width: 16, height: 16)
+                    Text("Фильтр")
+                        .font(.system(size: 14))
+                    Image(systemName: "chart.bar.xaxis")
+                        .frame(width: 16, height: 16)
+                    Text("График цен")
+                        .font(.system(size: 14))
+                }
+                .frame(width: 203, height: 37)
+                .background {
+                    RoundedRectangle(cornerRadius: 16)
+                        .fill(Color(hex: "#2261BC"))
+                }
+                .padding(.bottom, 32)
+            }
         }
         .toolbar(.hidden, for: .navigationBar)
         .onAppear() {
@@ -97,7 +118,7 @@ fileprivate struct TicketFullInfoView: View {
         ZStack(alignment: .leading) {
             VStack {
                 HStack {
-                    Text("\(price)")
+                    Text("\(price)" + " ₽")
                     Spacer()
                 }
                 .padding(4)
@@ -138,7 +159,8 @@ fileprivate struct TicketFullInfoView: View {
                     Spacer()
                 }
             }
-            .padding()
+            .padding(.leading)
+            .padding(.vertical)
             .background {
                 RoundedRectangle(cornerRadius: 16)
                     .fill(Color(hex: "#3E3F43"))

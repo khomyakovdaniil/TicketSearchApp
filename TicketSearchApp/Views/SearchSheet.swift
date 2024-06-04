@@ -16,9 +16,6 @@ struct SearchSheet: View {
     private let searchViewHeight = 90.0
     //    private let actionsViewHeight = 114.0
     
-    // MARK: - dismissal action
-    @Environment(\.dismiss) var dismiss
-    
     // MARK: - View
     var body: some View {
         VStack(alignment: .leading) {
@@ -26,7 +23,6 @@ struct SearchSheet: View {
                           arrivalCity: $model.arrivalCity,
                           departureCityPrompt: model.strings.departureCityPrompt,
                           arrivalCityPrompt: model.strings.arrivalCityPrompt) {
-                dismiss()
                 model.userEnteredArrivalCity()
             }
                           .padding()
@@ -39,7 +35,6 @@ struct SearchSheet: View {
             VStack {
                 ForEach(model.suggestions, id: \.self.text) { suggestion in
                     SuggestionView(popularDestinationString: model.strings.popularDestination, data: suggestion) {
-                        dismiss()
                         model.arrivalCity = suggestion.text
                         model.userEnteredArrivalCity()
                     }
@@ -61,14 +56,11 @@ fileprivate struct LocationsView: View {
     
     @Binding var departureCity: String
     @Binding var arrivalCity: String
-    
-    
-    
-    private let searchViewHeight = 96.0
-    
     let departureCityPrompt: String
     let arrivalCityPrompt: String
     let action: () -> Void
+    
+    private let searchViewHeight = 96.0
     
     var body: some View {
         VStack {

@@ -14,7 +14,8 @@ final class SearchSheetViewModel: ObservableObject {
         self.coordinator = coordinator
     }
     
-    var coordinator: Coordinator
+    let coordinator: Coordinator
+    let userDataRepository = UserDataRepository.shared
     
     @AppStorage("Departure city")
     var departureCity: String = "Минск" {
@@ -37,9 +38,9 @@ final class SearchSheetViewModel: ObservableObject {
         let text: String
     }
     
-    let strings = Constants.SearchSheet()
-    let actionTitles = Constants.SearchSheet.ActionTitles()
-    let suggestionCities = Constants.SearchSheet.SuggestionCities()
+    let strings = Constants.SearchSheet.self
+    let actionTitles = Constants.SearchSheet.ActionTitles.self
+    let suggestionCities = Constants.SearchSheet.SuggestionCities.self
     let fontName = Constants.fontName
     
     
@@ -59,7 +60,8 @@ final class SearchSheetViewModel: ObservableObject {
     
     @MainActor 
     func userEnteredArrivalCity() {
-        coordinator.arrivalCity = arrivalCity
+        userDataRepository.currentArrivalCity = arrivalCity
+        coordinator.hideSheet()
         coordinator.showSearchView()
     }
     

@@ -11,6 +11,8 @@ struct ContentView: View {
     
     @EnvironmentObject var coordinator: Coordinator
     
+    let strings = Constants.ContentView.self
+    
     var body: some View {
         TabView {
             NavigationStack(path: $coordinator.path) {
@@ -23,23 +25,23 @@ struct ContentView: View {
                     }
             }
                 .tabItem {
-                Label("Авиабилеты", image: "tab1")
+                    Label(strings.tab1, image: "tab1")
             }
             PlugView()
                 .tabItem {
-                    Label("Отели", image: "tab2")
+                    Label(strings.tab2, image: "tab2")
                 }
             PlugView()
                 .tabItem {
-                    Label("Короче", image: "tab3")
+                    Label(strings.tab3, image: "tab3")
                 }
             PlugView()
                 .tabItem {
-                    Label("Подписки", image: "tab4")
+                    Label(strings.tab4, image: "tab4")
                 }
             PlugView()
                 .tabItem {
-                    Label("Профиль", image: "tab5")
+                    Label(strings.tab5, image: "tab5")
                 }
         }
         .preferredColorScheme(.dark)

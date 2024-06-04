@@ -42,7 +42,7 @@ struct SearchView: View {
                     HStack {
                         Image(systemName: "slider.horizontal.3")
                             .frame(width: 16, height: 16)
-                        Text("фильтры")
+                        Text(model.strings.filters)
                             .font(.custom("SFProDisplay-LightItalic", size: 14))
                     }
                     .padding(.horizontal)
@@ -55,7 +55,7 @@ struct SearchView: View {
             }
             .padding(.leading)
             LazyVStack(alignment: .leading) {
-                Text("Прямые рельсы") // TODO: just for lulz, it's written like that in Figma
+                Text(model.strings.directFlights)
                     .font(.custom("SFProDisplay-Bold", size: 20))
                 ForEach(Array(model.offers?.enumerated()  ?? [].enumerated()), id: \.offset) { index, ticketOffer in
                     TicketOfferView(index, ticketOffer)
@@ -70,7 +70,7 @@ struct SearchView: View {
             Button() {
                 model.userTappedShowAllTickets()
             } label: {
-                Text("Посмотреть все билеты")
+                Text(model.strings.showAllTickets)
                     .foregroundColor(.white)
                     .frame(height: 42)
                     .frame(maxWidth: .infinity)
@@ -153,6 +153,7 @@ fileprivate struct ReturnDateView: View {
             HStack {
                 Image(systemName: "xmark")
                     .frame(maxHeight: 33)
+                    .contentShape(.rect)
                     .onTapGesture {
                         returnDate = nil
                     }
@@ -181,7 +182,7 @@ fileprivate struct ReturnDateView: View {
             HStack {
                 Image(systemName: "plus")
                     .frame(width: 16, height: 16)
-                Text("обратно")
+                Text(Constants.SearchView.returnFLight)
                     .font(.custom("SFProDisplay-LightItalic", size: 14))
             }
             .padding(.horizontal)
@@ -241,7 +242,7 @@ fileprivate struct PassengersView: View {
         HStack {
             Image(systemName: "person.fill")
                 .frame(width: 16, height: 16)
-            Text("1, эконом")
+            Text("1, " + Constants.SearchView.economy)
                 .font(.custom("SFProDisplay-LightItalic", size: 14))
         }
         .padding(.horizontal)
@@ -313,6 +314,6 @@ fileprivate struct TicketOfferView: View {
 }
 
 #Preview {
-    SearchView(model: SearchViewModel(coordinator: Coordinator(), arrivalCity: "test"))
+    SearchView(model: SearchViewModel(coordinator: Coordinator()))
         .preferredColorScheme(.dark)
 }

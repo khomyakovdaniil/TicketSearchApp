@@ -15,12 +15,12 @@ final class HomeViewModel: ObservableObject {
         bind()
     }
     
-    var coordinator: Coordinator
+    let coordinator: Coordinator
     
     @Published var data: HomeViewData?
     @Published var offers: [HomeViewData.Offer]?
     
-    let strings = Constants.HomeView()
+    let strings = Constants.HomeView.self
     let fontName = Constants.fontName
     
     @AppStorage("Departure city")

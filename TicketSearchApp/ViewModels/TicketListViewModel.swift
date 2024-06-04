@@ -10,33 +10,24 @@ import SwiftUI
 
 final class TicketListViewModel: ObservableObject {
    
-    init(coordinator: Coordinator, arrivalCity: String, flightDate: Date) {
+    init(coordinator: Coordinator) {
         self.coordinator = coordinator
-        self.arrivalCity = arrivalCity
-        self.flightDate = flightDate
         bind()
     }
     
-    var coordinator: Coordinator
+    let coordinator: Coordinator
     
-    @Published var data: TicketListViewData? {
-        didSet {
-            print("Gotcha")
-        }
-    }
-    @Published var tickets: [TicketListViewData.Ticket]? {
-        didSet {
-            print("Gotcha")
-        }
-    }
+    let userDataRepository = UserDataRepository.shared
+    
+    @Published var data: TicketListViewData?
+    @Published var tickets: [TicketListViewData.Ticket]?
     
     let strings = Constants.SearchView()
     let fontName = Constants.fontName
     
-    @AppStorage("Departure city")
-    var departureCity: String = ""
-    var arrivalCity: String
-    var flightDate: Date
+    var departureCity: String = UserDataRepository.shared.currentDepartureCity
+    var arrivalCity: String = UserDataRepository.shared.currentArrivalCity
+    var flightDate: Date = UserDataRepository.shared.currentFlightDate
     
     private func bind() {
         $data.map({ $0?.tickets }).assign(to: &$tickets)

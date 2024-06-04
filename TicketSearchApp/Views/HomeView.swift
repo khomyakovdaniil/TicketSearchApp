@@ -143,7 +143,7 @@ fileprivate struct ConcertView: View {
             HStack(spacing: 0) {
                 Image("concertFlightIcon")
                     .foregroundColor(.gray)
-                Text("от " + price + " ₽")
+                Text(Constants.HomeView.priceFrom + price + " ₽")
             }
         }
     }

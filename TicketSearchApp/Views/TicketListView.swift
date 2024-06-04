@@ -37,11 +37,11 @@ struct TicketListView: View {
                 HStack {
                     Image(systemName: "slider.horizontal.3")
                         .frame(width: 16, height: 16)
-                    Text("Фильтр")
+                    Text(Constants.TicketListView.filter)
                         .font(.system(size: 14))
                     Image(systemName: "chart.bar.xaxis")
                         .frame(width: 16, height: 16)
-                    Text("График цен")
+                    Text(Constants.TicketListView.priceChart)
                         .font(.system(size: 14))
                 }
                 .frame(width: 203, height: 37)
@@ -149,10 +149,10 @@ fileprivate struct TicketFullInfoView: View {
                     }
                     VStack {
                         HStack(spacing: 0) {
-                            Text(flightDuration.toHours() + "ч в пути")
+                            Text(flightDuration.toHours() + Constants.TicketListView.time)
                                 .font(.custom("SFProDisplay-LightItalic", size: 14))
                             if !hasTransfer {
-                                Text(" / Без пересадок")
+                                Text(Constants.TicketListView.direct)
                                     .font(.custom("SFProDisplay-LightItalic", size: 14))
                             }
                         }
@@ -188,6 +188,6 @@ fileprivate struct TicketFullInfoView: View {
 }
 
 #Preview {
-    TicketListView(model: TicketListViewModel(coordinator: Coordinator(), arrivalCity: "test", flightDate: Date()))
+    TicketListView(model: TicketListViewModel(coordinator: Coordinator()))
         .preferredColorScheme(.dark)
 }

@@ -13,36 +13,56 @@ struct Constants {
     static let departureCityPrompt = "Откуда - Москва"
     static let arrivalCityPrompt = "Куда - Турция"
     
+    struct ContentView {
+        static let tab1 = "Авиабилеты"
+        static let tab2 = "Отели"
+        static let tab3 = "Короче"
+        static let tab4 = "Подписки"
+        static let tab5 = "Профиль"
+    }
+    
     struct HomeView {
-        let title = "Поиск дешевых авиабилетов"
-        let subTitle = "Музыкально отлететь"
-        let departureCityPrompt = Constants.departureCityPrompt
-        let arrivalCityPrompt = Constants.arrivalCityPrompt
+        static let title = "Поиск дешевых авиабилетов"
+        static let subTitle = "Музыкально отлететь"
+        static let departureCityPrompt = Constants.departureCityPrompt
+        static let arrivalCityPrompt = Constants.arrivalCityPrompt
+        static let priceFrom = "от "
     }
     
     struct SearchSheet {
         
-        let popularDestination = "Популярное направление"
-        let departureCityPrompt = Constants.departureCityPrompt
-        let arrivalCityPrompt = Constants.arrivalCityPrompt
+        static let popularDestination = "Популярное направление"
+        static let departureCityPrompt = Constants.departureCityPrompt
+        static let arrivalCityPrompt = Constants.arrivalCityPrompt
         
         struct ActionTitles {
-            let route = "Сложный маршрут"
-            let anywhere = "Куда угодно"
-            let holiday = "Выходные"
-            let hot = "Горячие билеты"
+            static  let route = "Сложный маршрут"
+            static  let anywhere = "Куда угодно"
+            static let holiday = "Выходные"
+            static let hot = "Горячие билеты"
         }
         
         struct SuggestionCities {
-            let stambul = "Стамбул"
-            let sochi = "Сочи"
-            let phucket = "Пхукет"
+            static let stambul = "Стамбул"
+            static let sochi = "Сочи"
+            static let phucket = "Пхукет"
         }
     
     }
     
     struct SearchView {
-        
+        static let directFlights = "Прямые рельсы" // TODO: just for lulz, it's written like that in Figma"
+        static let showAllTickets = "Посмотреть все билеты"
+        static let returnFLight = "обратно"
+        static let economy = "эконом"
+        static let filters = "фильтры"
+    }
+    
+    struct TicketListView {
+        static let direct = " / Без пересадок"
+        static let time = "ч в пути"
+        static let filter = "Фильтр"
+        static let priceChart = "График цен"
     }
     
 }

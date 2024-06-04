@@ -10,26 +10,18 @@ import SwiftUI
 
 final class SearchViewModel: ObservableObject {
 
-    init(coordinator: Coordinator, arrivalCity: String) {
+    init(coordinator: Coordinator) {
         self.coordinator = coordinator
-        self.arrivalCity = arrivalCity
         bind()
     }
     
-    var coordinator: Coordinator
+    let coordinator: Coordinator
+    let userDataRepository = UserDataRepository.shared
     
-    @Published var data: SearchViewData? {
-        didSet {
-            print("gotcha")
-        }
-    }
-    @Published var offers: [SearchViewData.TicketOffer]? {
-        didSet {
-            print("gotcha")
-        }
-    }
+    @Published var data: SearchViewData?
+    @Published var offers: [SearchViewData.TicketOffer]?
     
-    let strings = Constants.SearchView()
+    let strings = Constants.SearchView.self
     let fontName = Constants.fontName
     
     @AppStorage("Departure city")
@@ -40,8 +32,9 @@ final class SearchViewModel: ObservableObject {
            }
         }
     }
-    @Published var arrivalCity: String
-    @Published var flightDate: Date = Date()
+    
+    @Published var arrivalCity: String = UserDataRepository.shared.currentArrivalCity
+    @Published var flightDate: Date = UserDataRepository.shared.currentFlightDate
     @Published var returnDate: Date?
     
     private func bind() {
@@ -57,8 +50,8 @@ final class SearchViewModel: ObservableObject {
     
     @MainActor
     func userTappedShowAllTickets() {
-        coordinator.arrivalCity = arrivalCity
-        coordinator.flightDate = flightDate
+        userDataRepository.currentArrivalCity = arrivalCity
+        userDataRepository.currentFlightDate = flightDate
         coordinator.showTicketListView()
     }
 }

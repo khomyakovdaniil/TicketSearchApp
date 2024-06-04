@@ -9,7 +9,7 @@ import Foundation
 
 struct Constants {
     
-    static let fontName = "SFPRODISPLAYBOLD"
+    static let fontName = "SFProDisplay-Bold"
     static let departureCityPrompt = "Откуда - Москва"
     static let arrivalCityPrompt = "Куда - Турция"
     

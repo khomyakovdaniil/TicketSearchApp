@@ -43,7 +43,7 @@ struct SearchView: View {
                         Image(systemName: "slider.horizontal.3")
                             .frame(width: 16, height: 16)
                         Text("фильтры")
-                            .font(.custom(model.fontName, size: 14))
+                            .font(.custom("SFProDisplay-LightItalic", size: 14))
                     }
                     .padding(.horizontal)
                     .frame(height: 33)
@@ -56,7 +56,7 @@ struct SearchView: View {
             .padding(.leading)
             LazyVStack(alignment: .leading) {
                 Text("Прямые рельсы") // TODO: just for lulz, it's written like that in Figma
-                    .font(.title) // TODO: set font
+                    .font(.custom("SFProDisplay-Bold", size: 20))
                 ForEach(Array(model.offers?.enumerated()  ?? [].enumerated()), id: \.offset) { index, ticketOffer in
                     TicketOfferView(index, ticketOffer)
                 }
@@ -74,7 +74,7 @@ struct SearchView: View {
                     .foregroundColor(.white)
                     .frame(height: 42)
                     .frame(maxWidth: .infinity)
-                    .font(.system(size: 16)) // TODO: replace font
+                    .font(.custom("SFProDisplay-LightItalic", size: 16))
                     .background {
                         RoundedRectangle(cornerRadius: 8)
                             .fill(Color(hex: "#2261BC"))
@@ -103,6 +103,7 @@ fileprivate struct LocationsView: View {
         HStack {
             Image(systemName: "arrow.left")
                 .frame(width: 24, height: 24)
+                .foregroundColor(.white)
                 .padding(.leading, 8)
                 .onTapGesture {
                     backButtonAction()
@@ -110,7 +111,7 @@ fileprivate struct LocationsView: View {
             VStack(alignment: .leading) {
                 HStack {
                     Text(departureCity)
-                        .foregroundColor(.gray)
+                        .font(.custom("SFProDisplay-Bold", size: 16))
                     Spacer()
                     Image(systemName: "arrow.up.arrow.down")
                         .frame(width: 24, height: 24)
@@ -124,7 +125,7 @@ fileprivate struct LocationsView: View {
                     .background(Color(hex: "#9F9F9F"))
                 HStack {
                     Text(arrivalCity)
-                        .foregroundColor(.gray)
+                        .font(.custom("SFProDisplay-Bold", size: 16))
                     Spacer()
                     Image(systemName: "xmark")
                         .frame(width: 24, height: 24)
@@ -181,7 +182,7 @@ fileprivate struct ReturnDateView: View {
                 Image(systemName: "plus")
                     .frame(width: 16, height: 16)
                 Text("обратно")
-                    .font(.system(size: 14)) // TODO: replace font
+                    .font(.custom("SFProDisplay-LightItalic", size: 14))
             }
             .padding(.horizontal)
             .frame(height: 33)
@@ -241,7 +242,7 @@ fileprivate struct PassengersView: View {
             Image(systemName: "person.fill")
                 .frame(width: 16, height: 16)
             Text("1, эконом")
-                .font(.system(size: 14)) // TODO: replace font
+                .font(.custom("SFProDisplay-LightItalic", size: 14))
         }
         .padding(.horizontal)
         .frame(height: 33)
@@ -260,7 +261,7 @@ fileprivate struct TicketOfferView: View {
     private let color: Color
     
     init(_ index: Int,_ offer: SearchViewData.TicketOffer) {
-        price = offer.price.value.formatted()
+        price = offer.price.value.priceFormatted()
         title = offer.title
         timeRange = offer.timeRange
         color = {
@@ -287,9 +288,11 @@ fileprivate struct TicketOfferView: View {
                 VStack(alignment: .leading, spacing: 4) {
                     HStack(spacing: 2) {
                         Text(title)
+                            .font(.custom("SFProDisplay-LightItalic", size: 14))
                         Spacer()
                         Text(price + " ₽")
                             .foregroundColor(.blue)
+                            .font(.custom("SFProDisplay-LightItalic", size: 14))
                         Image(systemName: "chevron.right")
                             .foregroundColor(.blue)
                     }
@@ -297,6 +300,7 @@ fileprivate struct TicketOfferView: View {
                         HStack {
                             ForEach(timeRange, id: \.self) { time in
                                 Text(time)
+                                    .font(.custom("SFProDisplay-Regular", size: 14))
                             }
                         }
                     }

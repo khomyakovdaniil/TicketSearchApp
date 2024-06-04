@@ -4,8 +4,11 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
-		<string>Support files/Font/SFPRODISPLAYBLACKITALIC.OTF</string>
-		<string>Support files/Font/SFPRODISPLAYBOLD.OTF</string>
+		<string>SFPRODISPLAYREGULAR.OTF</string>
+		<string>SFPRODISPLAYLIGHTITALIC.OTF</string>
+		<string>SFPRODISPLAYBLACKITALIC.OTF</string>
+		<string>SFPRODISPLAYBOLD.OTF</string>
+		<string>SFPRODISPLAYULTRALIGHTITALIC.OTF</string>
 	</array>
 </dict>
 </plist>

@@ -15,8 +15,8 @@ struct HomeView: View {
     // MARK: - Private constants
     private let titleFontSize = 22.0
     private let titleViewWidth = 172.0
-    private let titleViewHeight = 52.0
-    private let subtitleFontSize = 26.0
+    private let titleViewHeight = 54.0
+    private let subtitleFontSize = 22.0
     private let searchViewHeight = 90.0
     private let scrollViewHeight = 214.0
     
@@ -24,11 +24,12 @@ struct HomeView: View {
     // MARK: - View
     var body: some View {
         VStack(alignment: .leading) {
-            HStack {
+            HStack(spacing: 0) {
                 Spacer()
                 Text(model.strings.title)
                     .font(.custom(model.fontName, size: titleFontSize))
                     .multilineTextAlignment(.center)
+                    .foregroundColor(Color(hex: "#D9D9D9"))
                     .frame(width: titleViewWidth, height: titleViewHeight)
                     .padding()
                 Spacer()
@@ -81,11 +82,13 @@ fileprivate struct LocationsView: View {
                           prompt: Text(departureCityPrompt)
                     .foregroundColor(.gray)
                 )
+                .font(.custom("SFProDisplay-Bold", size: 16))
                 Divider()
                     .background(Color(hex: "#9F9F9F"))
                 HStack {
                     Text(arrivalCityPrompt)
                         .foregroundColor(.gray)
+                        .font(.custom("SFProDisplay-Bold", size: 16))
                     Spacer()
                 }
                 .contentShape(.rect)
@@ -124,7 +127,7 @@ fileprivate struct ConcertView: View {
         self.id = String(concert.id)
         self.title = concert.title
         self.town = concert.town
-        self.price = concert.price.value.formatted()
+        self.price = concert.price.value.priceFormatted()
     }
     
     var body: some View {
@@ -134,8 +137,9 @@ fileprivate struct ConcertView: View {
                 .frame(width: cellImageWidth, height: cellImageHeight)
                 .cornerRadius(16)
             Text(title)
-                .font(.title3) // TODO: set font
+                .font(.custom("SFProDisplay-Bold", size: 16))
             Text(town)
+                .font(.custom("SFProDisplay-Regular", size: 14))
             HStack(spacing: 0) {
                 Image("concertFlightIcon")
                     .foregroundColor(.gray)

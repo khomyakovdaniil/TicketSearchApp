@@ -77,8 +77,10 @@ fileprivate struct LocationsView: View {
                 }
             VStack(alignment: .leading) {
                 Text(departureCity + "-" + arrivalCity)
+                    .font(.custom("SFProDisplay-Bold", size: 16))
                 Text(flightDate.formattedDate() + ", 1 пассажир")
-                // TODO: replace with data from model
+                    .font(.custom("SFProDisplay-Regular", size: 14))
+                    .foregroundColor(Color(hex: "#9F9F9F"))
             }
             Spacer()
         }
@@ -118,7 +120,8 @@ fileprivate struct TicketFullInfoView: View {
         ZStack(alignment: .leading) {
             VStack {
                 HStack {
-                    Text("\(price)" + " ₽")
+                    Text(price.priceFormatted() + " ₽")
+                        .font(.custom("SFProDisplay-Bold", size: 22))
                     Spacer()
                 }
                 .padding(4)
@@ -129,28 +132,28 @@ fileprivate struct TicketFullInfoView: View {
                         .padding(4)
                     VStack {
                         Text(departureTime)
-                            .font(.system(size: 14)) // TODO: replace font
+                            .font(.custom("SFProDisplay-LightItalic", size: 14))
                         Text(departureAirport)
-                            .font(.system(size: 14))
+                            .font(.custom("SFProDisplay-LightItalic", size: 14))
                     }
                     VStack {
                         Text("—")
-                            .font(.system(size: 14))
+                            .font(.custom("SFProDisplay-LightItalic", size: 14))
                         Spacer()
                     }
                     VStack {
                         Text(arrivalTime)
-                            .font(.system(size: 14))
+                            .font(.custom("SFProDisplay-LightItalic", size: 14))
                         Text(arrivalAirport)
-                            .font(.system(size: 14))
+                            .font(.custom("SFProDisplay-LightItalic", size: 14))
                     }
                     VStack {
                         HStack(spacing: 0) {
                             Text(flightDuration.toHours() + "ч в пути")
-                                .font(.system(size: 14))
+                                .font(.custom("SFProDisplay-LightItalic", size: 14))
                             if !hasTransfer {
                                 Text(" / Без пересадок")
-                                    .font(.system(size: 14))
+                                    .font(.custom("SFProDisplay-LightItalic", size: 14))
                             }
                         }
                         Spacer()
@@ -170,7 +173,7 @@ fileprivate struct TicketFullInfoView: View {
             if let badge {
                 VStack {
                     Text(badge)
-                        .font(.system(size: 14))
+                        .font(.custom("SFProDisplay-LightItalic", size: 14))
                         .frame(height: 21)
                         .padding(.horizontal, 8)
                         .background {

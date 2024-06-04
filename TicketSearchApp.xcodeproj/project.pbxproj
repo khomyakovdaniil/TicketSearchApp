@@ -39,6 +39,7 @@
 		5FC0A32C2C0F645400B1CE63 /* SFPRODISPLAYSEMIBOLDITALIC.OTF in Resources */ = {isa = PBXBuildFile; fileRef = 5F2CC5022C0B9C4B00E86583 /* SFPRODISPLAYSEMIBOLDITALIC.OTF */; };
 		5FC0A32D2C0F645600B1CE63 /* SFPRODISPLAYTHINITALIC.OTF in Resources */ = {isa = PBXBuildFile; fileRef = 5F2CC4FA2C0B9C4B00E86583 /* SFPRODISPLAYTHINITALIC.OTF */; };
 		5FC0A32E2C0F645800B1CE63 /* SFPRODISPLAYULTRALIGHTITALIC.OTF in Resources */ = {isa = PBXBuildFile; fileRef = 5F2CC4FF2C0B9C4B00E86583 /* SFPRODISPLAYULTRALIGHTITALIC.OTF */; };
+		5FC0A3322C0F7F5500B1CE63 /* Int + PriceFormatted.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC0A3312C0F7F5500B1CE63 /* Int + PriceFormatted.swift */; };
 		5FEBD7CF2C0CF92C0085DDF9 /* TimeInterval+ToHours.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEBD7CE2C0CF92C0085DDF9 /* TimeInterval+ToHours.swift */; };
 		5FEBD7D12C0CFC180085DDF9 /* Double+Rounded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEBD7D02C0CFC180085DDF9 /* Double+Rounded.swift */; };
 /* End PBXBuildFile section */
@@ -78,6 +79,7 @@
 		5F7912602C0B74CB00CA4060 /* SearchSheetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSheetViewModel.swift; sourceTree = "<group>"; };
 		5FC0A3222C0F52D800B1CE63 /* PlugView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlugView.swift; sourceTree = "<group>"; };
 		5FC0A32F2C0F64F000B1CE63 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		5FC0A3312C0F7F5500B1CE63 /* Int + PriceFormatted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int + PriceFormatted.swift"; sourceTree = "<group>"; };
 		5FEBD7CE2C0CF92C0085DDF9 /* TimeInterval+ToHours.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+ToHours.swift"; sourceTree = "<group>"; };
 		5FEBD7D02C0CFC180085DDF9 /* Double+Rounded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Rounded.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -102,6 +104,7 @@
 				5F2CC5092C0CEF8E00E86583 /* String+ToDate.swift */,
 				5FEBD7CE2C0CF92C0085DDF9 /* TimeInterval+ToHours.swift */,
 				5FEBD7D02C0CFC180085DDF9 /* Double+Rounded.swift */,
+				5FC0A3312C0F7F5500B1CE63 /* Int + PriceFormatted.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -306,6 +309,7 @@
 				5F2CC50A2C0CEF8E00E86583 /* String+ToDate.swift in Sources */,
 				5F2CC4E52C0B912D00E86583 /* Constants.swift in Sources */,
 				5F7912462C0B51F800CA4060 /* SearchView.swift in Sources */,
+				5FC0A3322C0F7F5500B1CE63 /* Int + PriceFormatted.swift in Sources */,
 				5F7912382C0B4E2000CA4060 /* HomeView.swift in Sources */,
 				5F7912572C0B6FC900CA4060 /* SearchViewData.swift in Sources */,
 				5F7912552C0B6F1800CA4060 /* HomeViewData.swift in Sources */,

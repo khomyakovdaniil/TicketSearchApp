@@ -82,6 +82,7 @@ fileprivate struct LocationsView: View {
                           prompt: Text(departureCityPrompt)
                     .foregroundColor(.gray)
                 )
+                .font(.custom("SFProDisplay-Bold", size: 16))
             }
             Divider()
                 .background(Color(hex: "#9F9F9F"))
@@ -94,6 +95,7 @@ fileprivate struct LocationsView: View {
                           prompt: Text(arrivalCityPrompt)
                     .foregroundColor(.gray)
                 )
+                .font(.custom("SFProDisplay-Bold", size: 16))
                 .onSubmit() {
                     action()
                 }
@@ -136,7 +138,7 @@ fileprivate struct ActionView: View {
                 .resizable()
                 .frame(width: actionCellImageWidth, height: actionCellImageHeight)
             Text(text)
-                .font(.system(size: actionFontSize)) // TODO: replace font
+                .font(.custom("SFProDisplay-Regular", size: actionFontSize))
                 .multilineTextAlignment(.center)
             Spacer()
         }
@@ -174,9 +176,10 @@ fileprivate struct SuggestionView: View {
                     .cornerRadius(8)
                 VStack(alignment: .leading) {
                     Text(text)
-                        .bold() // TODO: handle text appearance
+                        .font(.custom("SFProDisplay-Bold", size: 16)) // TODO: handle text appearance
                     Text(popularDestinationString)
                         .foregroundColor(.gray)
+                        .font(.custom("SFProDisplay-Regular", size: 14))
                 }
                 Spacer()
             }

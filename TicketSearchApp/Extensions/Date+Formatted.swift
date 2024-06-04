@@ -12,7 +12,10 @@ extension Date {
     func formattedToTextView() -> some View {
         HStack(spacing: 0) {
             Text(self.formattedDate())
+                .font(.custom("SFProDisplay-LightItalic", size: 14))
             Text(", \(self.formattedWeekday())")
+                .font(.custom("SFProDisplay-LightItalic", size: 14))
+                .foregroundColor(Color(hex: "#9F9F9F"))
         }
     }
     

@@ -24,7 +24,7 @@ final class HomeViewModel: ObservableObject {
     let fontName = Constants.fontName
     
     @AppStorage("Departure city")
-    var departureCity: String = "Минск" {
+    var departureCity: String = "" {
         willSet {
            DispatchQueue.main.async {
               self.objectWillChange.send()

@@ -17,10 +17,10 @@ struct TicketListView: View {
     
     var body: some View {
         VStack {
-            NavigationView() {
+            LocationsView(departureCity: model.departureCity, arrivalCity: model.arrivalCity, flightDate: model.flightDate) {
                 dismiss()
             }
-            .padding(.bottom)
+            .padding(.horizontal)
             ScrollView {
                 LazyVStack(spacing: 0) {
                     ForEach(model.tickets ?? [], id: \.self.id) { ticket in
@@ -28,6 +28,7 @@ struct TicketListView: View {
                     }
                 }
             }
+            .padding()
             Spacer()
         }
         .toolbar(.hidden, for: .navigationBar)
@@ -37,7 +38,11 @@ struct TicketListView: View {
     }
 }
 
-struct NavigationView: View {
+fileprivate struct LocationsView: View {
+    
+    let departureCity: String
+    let arrivalCity: String
+    let flightDate: Date
     
     let backButtonAction: () -> Void
     
@@ -49,11 +54,12 @@ struct NavigationView: View {
                 .onTapGesture {
                     backButtonAction()
                 }
-            VStack {
-                Text("Москва-Сочи")
-                Text("23 февраля, 1 пассажир")
+            VStack(alignment: .leading) {
+                Text(departureCity + "-" + arrivalCity)
+                Text(flightDate.formattedDate() + ", 1 пассажир")
                 // TODO: replace with data from model
             }
+            Spacer()
         }
         .padding()
         .background {
@@ -65,7 +71,7 @@ struct NavigationView: View {
     
 }
 
-struct TicketFullInfoView: View {
+fileprivate struct TicketFullInfoView: View {
     
     private let badge: String?
     private let price: Int
@@ -138,7 +144,7 @@ struct TicketFullInfoView: View {
                     .fill(Color(hex: "#3E3F43"))
                     .shadow(radius: 2, y: 2)
             }
-            .padding(8)
+            .padding(.vertical, 8)
             if let badge {
                 VStack {
                     Text(badge)
@@ -151,7 +157,6 @@ struct TicketFullInfoView: View {
                         }
                     Spacer()
                 }
-                .padding(.leading, 8)
             }
         }
     }

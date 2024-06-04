@@ -16,7 +16,14 @@ final class SearchSheetViewModel: ObservableObject {
     
     var coordinator: Coordinator
     
-    @Published var departureCity: String = "Минск"
+    @AppStorage("Departure city")
+    var departureCity: String = "Минск" {
+        willSet {
+           DispatchQueue.main.async {
+              self.objectWillChange.send()
+           }
+        }
+    }
     @Published var arrivalCity: String = ""
     
     struct ActionData {

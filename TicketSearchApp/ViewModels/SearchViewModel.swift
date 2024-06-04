@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 final class SearchViewModel: ObservableObject {
 
@@ -30,7 +31,14 @@ final class SearchViewModel: ObservableObject {
     let strings = Constants.SearchView()
     let fontName = Constants.fontName
     
-    @Published var departureCity: String = "Минск"
+    @AppStorage("Departure city")
+    var departureCity: String = "Минск" {
+        willSet {
+           DispatchQueue.main.async {
+              self.objectWillChange.send()
+           }
+        }
+    }
     @Published var arrivalCity: String = "Москва"
     @Published var flightDate: Date = Date()
     @Published var returnDate: Date?

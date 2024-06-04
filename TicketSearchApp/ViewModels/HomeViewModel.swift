@@ -23,7 +23,14 @@ final class HomeViewModel: ObservableObject {
     let strings = Constants.HomeView()
     let fontName = Constants.fontName
     
-    @Published var departureCity: String = "Минск"
+    @AppStorage("Departure city")
+    var departureCity: String = "Минск" {
+        willSet {
+           DispatchQueue.main.async {
+              self.objectWillChange.send()
+           }
+        }
+    }
     @Published var arrivalCity: String = ""
     
     private func bind() {

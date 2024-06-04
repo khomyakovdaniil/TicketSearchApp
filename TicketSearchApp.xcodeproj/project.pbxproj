@@ -29,6 +29,7 @@
 		5F79125D2C0B74A400CA4060 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F79125C2C0B74A400CA4060 /* SearchViewModel.swift */; };
 		5F79125F2C0B74BB00CA4060 /* TicketListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F79125E2C0B74BB00CA4060 /* TicketListViewModel.swift */; };
 		5F7912612C0B74CB00CA4060 /* SearchSheetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7912602C0B74CB00CA4060 /* SearchSheetViewModel.swift */; };
+		5FC0A3232C0F52D800B1CE63 /* PlugView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC0A3222C0F52D800B1CE63 /* PlugView.swift */; };
 		5FEBD7CF2C0CF92C0085DDF9 /* TimeInterval+ToHours.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEBD7CE2C0CF92C0085DDF9 /* TimeInterval+ToHours.swift */; };
 		5FEBD7D12C0CFC180085DDF9 /* Double+Rounded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEBD7D02C0CFC180085DDF9 /* Double+Rounded.swift */; };
 /* End PBXBuildFile section */
@@ -66,6 +67,7 @@
 		5F79125C2C0B74A400CA4060 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		5F79125E2C0B74BB00CA4060 /* TicketListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketListViewModel.swift; sourceTree = "<group>"; };
 		5F7912602C0B74CB00CA4060 /* SearchSheetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSheetViewModel.swift; sourceTree = "<group>"; };
+		5FC0A3222C0F52D800B1CE63 /* PlugView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlugView.swift; sourceTree = "<group>"; };
 		5FEBD7CE2C0CF92C0085DDF9 /* TimeInterval+ToHours.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+ToHours.swift"; sourceTree = "<group>"; };
 		5FEBD7D02C0CFC180085DDF9 /* Double+Rounded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Rounded.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -168,6 +170,7 @@
 				5F7912492C0B542900CA4060 /* SearchSheet.swift */,
 				5F7912452C0B51F800CA4060 /* SearchView.swift */,
 				5F7912472C0B53DD00CA4060 /* TicketListView.swift */,
+				5FC0A3222C0F52D800B1CE63 /* PlugView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -294,6 +297,7 @@
 				5F79125B2C0B748D00CA4060 /* HomeViewModel.swift in Sources */,
 				5F7912502C0B657200CA4060 /* NetworkManager.swift in Sources */,
 				5FEBD7D12C0CFC180085DDF9 /* Double+Rounded.swift in Sources */,
+				5FC0A3232C0F52D800B1CE63 /* PlugView.swift in Sources */,
 				5F7912362C0B4E2000CA4060 /* TicketSearchAppApp.swift in Sources */,
 				5F7912442C0B4E4100CA4060 /* Coordinator.swift in Sources */,
 				5FEBD7CF2C0CF92C0085DDF9 /* TimeInterval+ToHours.swift in Sources */,

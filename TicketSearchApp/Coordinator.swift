@@ -33,6 +33,10 @@ final class Coordinator: ObservableObject {
         sheet = .search
     }
     
+    func showPlugSheet() {
+        sheet = .plug
+    }
+    
     @ViewBuilder
     func getView(_ view: AppViews) -> some View {
         switch view {
@@ -45,6 +49,8 @@ final class Coordinator: ObservableObject {
         case .ticketList:
             let vm = TicketListViewModel(coordinator: self, arrivalCity: arrivalCity ?? "", flightDate: flightDate ?? Date())
             TicketListView(model: vm)
+        case .plugView:
+            PlugView()
         }
     }
     
@@ -54,18 +60,20 @@ final class Coordinator: ObservableObject {
         case .search:
             let vm = SearchSheetViewModel(coordinator: self)
             SearchSheet(model: vm)
+        case .plug:
+            PlugView()
         }
     }
 }
 
 enum AppViews: String, CaseIterable, Identifiable {
-    case home, search, ticketList
+    case home, search, ticketList, plugView
     
     var id: String { self.rawValue }
 }
 
 enum AppSheets: String, CaseIterable, Identifiable {
-    case search
+    case search, plug
     
     var id: String { self.rawValue }
 }

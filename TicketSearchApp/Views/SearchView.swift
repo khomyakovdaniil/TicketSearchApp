@@ -7,12 +7,13 @@
 
 import SwiftUI
 
+// MARK: - MainView
 struct SearchView: View {
     
-    // MARK: - ViewModel
+    // MARK: ViewModel
     @StateObject var model: SearchViewModel
     
-    // MARK: - Private constants
+    // MARK: Private constants
     private let titleFontSize = 22.0
     private let titleViewWidth = 172.0
     private let titleViewHeight = 52.0
@@ -22,10 +23,10 @@ struct SearchView: View {
     private let scrollViewHeight = 214.0
     private let cellImagePrompt = "HomeViewImage"
     
-    // MARK: - Dismissal action
+    // MARK: Dismissal action
     @Environment(\.dismiss) var dismiss
     
-    // MARK: - View
+    // MARK: View
     var body: some View {
         VStack {
             LocationsView(arrivalCity: $model.arrivalCity,
@@ -90,15 +91,21 @@ struct SearchView: View {
     }
 }
 
+// MARK: - Subviews
+
+// MARK: - LocationsView
 fileprivate struct LocationsView: View {
     
+    // MARK: Properties
     @Binding var arrivalCity: String
     @Binding var departureCity: String
-    
-    private let searchViewHeight = 90.0
-    
     let backButtonAction: () -> Void
     
+    // MARK: Private properties
+    private let searchViewHeight = 90.0
+
+    
+    // MARK: View
     var body: some View {
         HStack {
             Image(systemName: "arrow.left")
@@ -133,7 +140,7 @@ fileprivate struct LocationsView: View {
             }
         }
         .padding(.trailing)
-        .frame(height: searchViewHeight) // TODO: handle size
+        .frame(height: searchViewHeight) 
         .background {
             RoundedRectangle(cornerRadius: 16)
                 .fill(Color(hex: "#2F3035"))
@@ -142,12 +149,16 @@ fileprivate struct LocationsView: View {
     }
 }
 
+// MARK: - ReturnDateView
 fileprivate struct ReturnDateView: View {
     
+    // MARK: Properies
     @Binding var returnDate: Date?
     
+    // MARK: State Variables
     @State private var returnDateUnwrapped: Date = Date()
     
+    // MARK: View
     var body: some View {
         if let returnDateUnwr = returnDate {
             HStack {
@@ -206,14 +217,16 @@ fileprivate struct ReturnDateView: View {
     }
 }
 
+// MARK: - FlightDateView
 fileprivate struct FlightDateView: View {
     
-    // MARK: - State variables
-    
-    @State private var isUpdatingDate = false
-    
+    // MARK: Properties
     @Binding var flightDate: Date
     
+    // MARK: State variables
+    @State private var isUpdatingDate = false
+    
+    // MARK: View
     var body: some View {
         flightDate.formattedToTextView()
             .padding(.horizontal)
@@ -236,8 +249,10 @@ fileprivate struct FlightDateView: View {
     }
 }
 
+// MARK: - PassengersView
 fileprivate struct PassengersView: View {
     
+    // MARK: View
     var body: some View {
         HStack {
             Image(systemName: "person.fill")
@@ -254,13 +269,16 @@ fileprivate struct PassengersView: View {
     }
 }
 
+// MARK: - TicketOfferView
 fileprivate struct TicketOfferView: View {
     
+    // MARK: View
     private let price: String
     private let title: String
     private let timeRange: [String]
     private let color: Color
     
+    // MARK: Convenience init
     init(_ index: Int,_ offer: SearchViewData.TicketOffer) {
         price = offer.price.value.priceFormatted()
         title = offer.title
@@ -279,6 +297,7 @@ fileprivate struct TicketOfferView: View {
         }()
     }
     
+    // MARK: View
     var body: some View {
         VStack {
             HStack {
@@ -313,6 +332,7 @@ fileprivate struct TicketOfferView: View {
     }
 }
 
+// MARK: - Preview
 #Preview {
     SearchView(model: SearchViewModel(coordinator: Coordinator()))
         .preferredColorScheme(.dark)

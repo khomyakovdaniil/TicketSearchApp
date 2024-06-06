@@ -8,15 +8,16 @@
 import SwiftUI
 import Combine
 
+// MARK: - MainView
 struct SearchSheet: View {
     
-    // MARK: - ViewModel
+    // MARK: ViewModel
     @StateObject var model: SearchSheetViewModel
     
-    // MARK: - Private constants
+    // MARK: Private constants
     private let searchViewHeight = 90.0
     
-    // MARK: - View
+    // MARK: View
     var body: some View {
         VStack(alignment: .leading) {
             LocationsView(departureCityTextValidator: TextValidator(text: model.departureCity),
@@ -54,19 +55,26 @@ struct SearchSheet: View {
     }
 }
 
+// MARK: - Subviews
+
+// MARK: - LocationsView
 fileprivate struct LocationsView: View {
     
+    // MARK: Input validation
     @ObservedObject var departureCityTextValidator: TextValidator
     @ObservedObject var arrivalCityTextValidator: TextValidator
     
+    // MARK: Private properies
     private let searchViewHeight = 96.0
     
+    // MARK: Properies
     @Binding var departureCity: String
     @Binding var arrivalCity: String
     let departureCityPrompt: String
     let arrivalCityPrompt: String
     let action: () -> Void
     
+    // MARK: View
     var body: some View {
         VStack {
             HStack {
@@ -136,21 +144,27 @@ fileprivate struct LocationsView: View {
     }
 }
 
+// MARK: - ActionsView
 fileprivate struct ActionView: View {
     
-    private let imageName: String
-    private let text: String
-    private let action: @MainActor () -> Void
+    // MARK: Properties
+    let imageName: String
+    let text: String
+    let action: @MainActor () -> Void
+    
+    // MARK: Private properties
     private let actionCellImageHeight = 48.0
     private let actionCellImageWidth = 48.0
     private let actionFontSize = 14.0
     
+    // MARK: Convenience init
     init(_ data: SearchSheetViewModel.ActionData) {
         imageName = data.imagename
         text = data.text
         action = data.action
     }
     
+    // MARK: View
     var body: some View {
         VStack(alignment: .center) {
             Image(imageName)
@@ -168,15 +182,18 @@ fileprivate struct ActionView: View {
     }
 }
 
+// MARK: - SuggestionView
 fileprivate struct SuggestionView: View {
     
-    private let imageName: String
-    private let text: String
-    private let action: @MainActor () -> Void
-    private let popularDestinationString: String
-    private let suggestionCellImageHeight = 40.0
-    private let suggestionCellImageWidth = 40.0
+    // MARK: Properties
+    let imageName: String
+    let text: String
+    let action: @MainActor () -> Void
+    let popularDestinationString: String
+    let suggestionCellImageHeight = 40.0
+    let suggestionCellImageWidth = 40.0
     
+    // MARK: Convenience init
     init(popularDestinationString: String, data: SearchSheetViewModel.SuggestionData, action: @escaping @MainActor () -> Void) {
         imageName = data.imagename
         text = data.text
@@ -184,6 +201,7 @@ fileprivate struct SuggestionView: View {
         self.popularDestinationString = popularDestinationString
     }
     
+    // MARK: View
     var body: some View {
         VStack {
             HStack {
@@ -195,7 +213,7 @@ fileprivate struct SuggestionView: View {
                     .cornerRadius(8)
                 VStack(alignment: .leading) {
                     Text(text)
-                        .font(.custom("SFProDisplay-Bold", size: 16)) // TODO: handle text appearance
+                        .font(.custom("SFProDisplay-Bold", size: 16))
                     Text(popularDestinationString)
                         .foregroundColor(.gray)
                         .font(.custom("SFProDisplay-Regular", size: 14))
@@ -212,6 +230,7 @@ fileprivate struct SuggestionView: View {
     }
 }
 
+// MARK: - Preview
 #Preview {
     SearchSheet(model: SearchSheetViewModel(coordinator: Coordinator()))
         .preferredColorScheme(.dark)

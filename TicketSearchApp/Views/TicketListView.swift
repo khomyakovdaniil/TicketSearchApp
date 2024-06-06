@@ -7,14 +7,16 @@
 
 import SwiftUI
 
+// MARK: - MainView
 struct TicketListView: View {
     
-    // MARK: - ViewModel
+    // MARK: ViewModel
     @StateObject var model: TicketListViewModel
     
-    // MARK: - dismissal action
+    // MARK: Dismissal action
     @Environment(\.dismiss) var dismiss
     
+    // MARK: View
     var body: some View {
         ZStack {
             VStack {
@@ -59,14 +61,17 @@ struct TicketListView: View {
     }
 }
 
+// MARK: - LocationsView
 fileprivate struct LocationsView: View {
     
+    // MARK: Properties
     let departureCity: String
     let arrivalCity: String
     let flightDate: Date
     
     let backButtonAction: () -> Void
     
+    // MARK: View
     var body: some View {
         HStack {
             Image(systemName: "arrow.left")
@@ -94,8 +99,10 @@ fileprivate struct LocationsView: View {
     
 }
 
+// MARK: - TicketFullInfoView
 fileprivate struct TicketFullInfoView: View {
     
+    // MARK: Properties
     private let badge: String?
     private let price: Int
     private let departureTime: String
@@ -105,6 +112,7 @@ fileprivate struct TicketFullInfoView: View {
     private let hasTransfer: Bool
     private let flightDuration: TimeInterval
     
+    // MARK: Convenience init
     init(data: TicketListViewData.Ticket) {
         badge = data.badge
         price = data.price.value
@@ -116,6 +124,7 @@ fileprivate struct TicketFullInfoView: View {
         flightDuration = data.arrival.date.toDate().timeIntervalSince(data.departure.date.toDate())
     }
     
+    // MARK: View
     var body: some View {
         ZStack(alignment: .leading) {
             VStack {
@@ -187,6 +196,7 @@ fileprivate struct TicketFullInfoView: View {
     }
 }
 
+// MARK: - Preview
 #Preview {
     TicketListView(model: TicketListViewModel(coordinator: Coordinator()))
         .preferredColorScheme(.dark)

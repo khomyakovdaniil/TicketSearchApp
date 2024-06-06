@@ -137,16 +137,21 @@ fileprivate struct LocationsView: View {
     }
 }
 
+// MARK: - ConcertView
 fileprivate struct ConcertView: View {
     
+    // MARK: Private properties
     private let cellImagePrompt = "HomeViewImage"
     private let cellImageHeight = 132.0
     private let cellImageWidth = 132.0
-    let id: String
-    let title: String
-    let town: String
-    let price: String
     
+    // MARK: Properties
+    private let id: String
+    private let title: String
+    private let town: String
+    private let price: String
+    
+    // MARK: Convenience init
     init(concert: HomeViewData.Offer) {
         self.id = String(concert.id)
         self.title = concert.title
@@ -154,6 +159,7 @@ fileprivate struct ConcertView: View {
         self.price = concert.price.value.priceFormatted()
     }
     
+    // MARK: View
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
             Image(cellImagePrompt+id)

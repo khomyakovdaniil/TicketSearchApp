@@ -6,13 +6,15 @@
 //
 
 import SwiftUI
+import Combine
 
+// MARK: - MainView
 struct HomeView: View {
     
-    // MARK: - ViewModel
+    // MARK: ViewModel
     @StateObject var model: HomeViewModel
     
-    // MARK: - Private constants
+    // MARK: Private constants
     private let titleFontSize = 22.0
     private let titleViewWidth = 172.0
     private let titleViewHeight = 54.0
@@ -21,7 +23,7 @@ struct HomeView: View {
     private let scrollViewHeight = 214.0
     
     
-    // MARK: - View
+    // MARK: View
     var body: some View {
         VStack(alignment: .leading) {
             HStack(spacing: 0) {
@@ -34,7 +36,11 @@ struct HomeView: View {
                     .padding()
                 Spacer()
             }
-            LocationsView(departureCity: $model.departureCity, departureCityPrompt: model.strings.departureCityPrompt, arrivalCityPrompt: model.strings.arrivalCityPrompt, searchViewHeight: searchViewHeight) {
+            LocationsView(textValidator: TextValidator(text: model.departureCity),
+                          departureCity: $model.departureCity,
+                          departureCityPrompt: model.strings.departureCityPrompt,
+                          arrivalCityPrompt: model.strings.arrivalCityPrompt,
+                          searchViewHeight: searchViewHeight) {
                 model.userInititatedArrivalCityTextEdit()
             }
             .padding()
@@ -60,8 +66,15 @@ struct HomeView: View {
     }
 }
 
+// MARK: - Subviews
+
+// MARK: - LocactionsView
 fileprivate struct LocationsView: View {
     
+    // MARK: Input validation
+    @ObservedObject var textValidator: TextValidator
+    
+    // MARK: Properties
     @Binding var departureCity: String
     let departureCityPrompt: String
     let arrivalCityPrompt: String
@@ -70,6 +83,7 @@ fileprivate struct LocationsView: View {
     
     let action: () -> Void
     
+    // MARK: View
     var body: some View {
         HStack {
             Image("magnifierIcon")
@@ -78,10 +92,19 @@ fileprivate struct LocationsView: View {
                 .padding(.leading, 8)
             VStack(alignment: .leading) {
                 TextField("",
-                          text: $departureCity,
+                          text: $textValidator.text,
                           prompt: Text(departureCityPrompt)
                     .foregroundColor(.gray)
                 )
+                .onReceive(Just(textValidator.text)) { newValue in
+                    guard let lastCharacter = newValue.last else {
+                        return
+                    }
+                    if !textValidator.allowedCharacters.contains(String(lastCharacter)) {
+                        self.textValidator.text = String(newValue.dropLast())
+                    }
+                    print(newValue)
+            }
                 .font(.custom("SFProDisplay-Bold", size: 16))
                 Divider()
                     .background(Color(hex: "#9F9F9F"))
@@ -93,6 +116,7 @@ fileprivate struct LocationsView: View {
                 }
                 .contentShape(.rect)
                 .onTapGesture() {
+                        departureCity = textValidator.text
                         action()
                     }
             }

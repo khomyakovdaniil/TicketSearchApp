@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 struct SearchSheet: View {
     
@@ -14,12 +15,13 @@ struct SearchSheet: View {
     
     // MARK: - Private constants
     private let searchViewHeight = 90.0
-    //    private let actionsViewHeight = 114.0
     
     // MARK: - View
     var body: some View {
         VStack(alignment: .leading) {
-            LocationsView(departureCity: $model.departureCity,
+            LocationsView(departureCityTextValidator: TextValidator(text: model.departureCity),
+                          arrivalCityTextValidator: TextValidator(text: model.arrivalCity),
+                          departureCity: $model.departureCity,
                           arrivalCity: $model.arrivalCity,
                           departureCityPrompt: model.strings.departureCityPrompt,
                           arrivalCityPrompt: model.strings.arrivalCityPrompt) {
@@ -54,13 +56,16 @@ struct SearchSheet: View {
 
 fileprivate struct LocationsView: View {
     
+    @ObservedObject var departureCityTextValidator: TextValidator
+    @ObservedObject var arrivalCityTextValidator: TextValidator
+    
+    private let searchViewHeight = 96.0
+    
     @Binding var departureCity: String
     @Binding var arrivalCity: String
     let departureCityPrompt: String
     let arrivalCityPrompt: String
     let action: () -> Void
-    
-    private let searchViewHeight = 96.0
     
     var body: some View {
         VStack {
@@ -70,11 +75,23 @@ fileprivate struct LocationsView: View {
                     .frame(width: 24, height: 24)
                     .foregroundColor(.gray)
                 TextField("",
-                          text: $departureCity,
+                          text: $departureCityTextValidator.text,
                           prompt: Text(departureCityPrompt)
                     .foregroundColor(.gray)
                 )
+                .onReceive(Just(departureCityTextValidator.text)) { newValue in
+                    guard let lastCharacter = newValue.last else {
+                        return
+                    }
+                    if !departureCityTextValidator.allowedCharacters.contains(String(lastCharacter)) {
+                        self.departureCityTextValidator.text = String(newValue.dropLast())
+                    }
+                    print(newValue)
+            }
                 .font(.custom("SFProDisplay-Bold", size: 16))
+                .onSubmit {
+                    departureCity = departureCityTextValidator.text
+                }
             }
             Divider()
                 .background(Color(hex: "#9F9F9F"))
@@ -83,12 +100,22 @@ fileprivate struct LocationsView: View {
                     .resizable()
                     .frame(width: 24, height: 24)
                 TextField("",
-                          text: $arrivalCity,
+                          text: $arrivalCityTextValidator.text,
                           prompt: Text(arrivalCityPrompt)
                     .foregroundColor(.gray)
                 )
+                .onReceive(Just(arrivalCityTextValidator.text)) { newValue in
+                    guard let lastCharacter = newValue.last else {
+                        return
+                    }
+                    if !arrivalCityTextValidator.allowedCharacters.contains(String(lastCharacter)) {
+                        self.arrivalCityTextValidator.text = String(newValue.dropLast())
+                    }
+                    print(newValue)
+            }
                 .font(.custom("SFProDisplay-Bold", size: 16))
                 .onSubmit() {
+                    arrivalCity = arrivalCityTextValidator.text
                     action()
                 }
                 Spacer()

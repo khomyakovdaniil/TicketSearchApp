@@ -43,6 +43,7 @@
 		5FC0A3342C0F9B6800B1CE63 /* UserDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC0A3332C0F9B6800B1CE63 /* UserDataRepository.swift */; };
 		5FEBD7CF2C0CF92C0085DDF9 /* TimeInterval+ToHours.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEBD7CE2C0CF92C0085DDF9 /* TimeInterval+ToHours.swift */; };
 		5FEBD7D12C0CFC180085DDF9 /* Double+Rounded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEBD7D02C0CFC180085DDF9 /* Double+Rounded.swift */; };
+		5FF000A32C1214AF00570011 /* TextValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF000A22C1214AF00570011 /* TextValidator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,6 +85,7 @@
 		5FC0A3332C0F9B6800B1CE63 /* UserDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataRepository.swift; sourceTree = "<group>"; };
 		5FEBD7CE2C0CF92C0085DDF9 /* TimeInterval+ToHours.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+ToHours.swift"; sourceTree = "<group>"; };
 		5FEBD7D02C0CFC180085DDF9 /* Double+Rounded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Rounded.swift"; sourceTree = "<group>"; };
+		5FF000A22C1214AF00570011 /* TextValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextValidator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +167,7 @@
 				5F7912432C0B4E4100CA4060 /* Coordinator.swift */,
 				5F2CC4E62C0B937000E86583 /* Support files */,
 				5F2CC4E12C0B7BE000E86583 /* Extensions */,
+				5FF000A12C12149E00570011 /* Utils */,
 				5F79123B2C0B4E2200CA4060 /* Preview Content */,
 			);
 			path = TicketSearchApp;
@@ -227,6 +230,14 @@
 				5F7912582C0B6FDC00CA4060 /* TicketListViewData.swift */,
 			);
 			path = ServerResponses;
+			sourceTree = "<group>";
+		};
+		5FF000A12C12149E00570011 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				5FF000A22C1214AF00570011 /* TextValidator.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -333,6 +344,7 @@
 				5F79124A2C0B542900CA4060 /* SearchSheet.swift in Sources */,
 				5F7912612C0B74CB00CA4060 /* SearchSheetViewModel.swift in Sources */,
 				5F2CC5042C0C8BA600E86583 /* Color+Hex.swift in Sources */,
+				5FF000A32C1214AF00570011 /* TextValidator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
